@@ -1,6 +1,8 @@
 # '''
 # Linked List hash table key/value pair
 # '''
+from linkedlist import LinkedList
+
 class LinkedPair:
     def __init__(self, key, value):
         self.key = key
@@ -125,7 +127,7 @@ class HashTable:
         self.storage = temp_storage
 
 
-
+"""
 if __name__ == "__main__":
     ht = HashTable(2)
 
@@ -159,3 +161,15 @@ if __name__ == "__main__":
     print(f"storage: {ht.storage}")
 
     print("")
+"""
+ll = LinkedList(LinkedPair('dog', 'bark'))
+ll.add_to_head(LinkedPair('cat', 'meow'))
+ll.print_ll()
+print("update existing key/value pair:")
+ll.update_kv('dog', 'woof')
+ll.print_ll()
+ll.add_to_head(LinkedPair('cow', 'moo'))
+ll.print_ll()
+print("remove existing key/value pair:")
+ll.remove('cat')
+ll.print_ll()
