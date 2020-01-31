@@ -23,14 +23,13 @@ class HashTable:
 
         You may replace the Python hash with DJB2 as a stretch goal.
         '''
+        lst = list(key)
         output_index = 0
-        WEIRD_PRIME = 31
-        for indx in range(min(len(key), 100)):
-            value = ord(key[indx]) - 96
-            output_index = (output_index + WEIRD_PRIME + value) % len(key)
+        for char in lst:
+            output_index += ord(char)
 
-        print(f"output_index: {output_index}")
         return output_index
+        
 
 
     def _hash_djb2(self, key):
@@ -39,7 +38,14 @@ class HashTable:
 
         OPTIONAL STRETCH: Research and implement DJB2
         '''
-        pass
+        # output_index = 0
+        # WEIRD_PRIME = 31
+        # for indx in range(min(len(key), 100)):
+        #     value = ord(key[indx]) - 96
+        #     output_index = (output_index + WEIRD_PRIME + value) % len(key)
+
+        # print(f"output_index: {output_index}")
+        # return output_index
 
 
     def _hash_mod(self, key):
@@ -48,7 +54,7 @@ class HashTable:
         within the storage capacity of the hash table.
         '''
         index = self._hash(key) % self.capacity
-        print(f"_hash_mod index: {index}")
+        print(f"_hash_mod index for {key}: {index}")
         return index
 
 
@@ -65,8 +71,7 @@ class HashTable:
             self.storage[self._hash_mod(key)] = (key, value)
         else:
             self.storage[self._hash_mod(key)] = (key, value)
-            
-        
+             
 
 
 
@@ -148,7 +153,7 @@ if __name__ == "__main__":
     print(f"line_2: {ht.retrieve('line_2')}")
     # print(ht.retrieve("line_2"))
     # print(ht.retrieve("line_3"))
-    ht.remove('line_1')
+    # ht.remove('line_1')
     ht.insert("line_3", "Linked list saves the day!")
     print(ht.retrieve("line_3"))
     print(f"storage: {ht.storage}")
